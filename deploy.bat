@@ -34,4 +34,17 @@ git rm -rf . >nul 2>&1
 del /q *.* >nul 2>&1
 for /d %%i in (*) do rmdir /s /q "%%i"
 
-echo === Step 5: Copy _site conten_
+echo === Step 5: Copy _site content to root ===
+xcopy "%BUILD_DIR%\*" . /E /I /Y >nul
+
+echo === Step 6: Commit and push to gh-pages ===
+git add .
+git commit -m "Deploy site update"
+git push origin %DEPLOY_BRANCH%
+
+echo === Step 7: Switch back to main ===
+git checkout %MAIN_BRANCH%
+
+echo ✅ Deployment to gh-pages complete!
+pause
+endlocal
