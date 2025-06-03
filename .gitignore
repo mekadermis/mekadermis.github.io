@@ -1,0 +1,6 @@
+# Ignore Jekyll source when working only with output
+/_site/
+/.bundle/
+/vendor/
+/tmp/
+/*.gem
