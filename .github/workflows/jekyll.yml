@@ -2,9 +2,9 @@ name: Jekyll site CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
     
     - name: Deploy to gh-pages
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
